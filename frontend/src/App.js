@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import Index from './pages/Index';
+import { useState } from 'react';
 
 function App() {
+
+  const [list, setList] = useState([
+    {
+      id: '1',
+      name: 'Learn MERN',
+      done: false
+    }
+  ])
+
+  const [id, setId] = useState('')
+  const [name, setName] = useState('')
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault()
+    setId((Math.floor(Math.random()*1000000)).toString())
+    setList([...list, { id, name, done: false }])
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Index list={list} handleSubmit={handleSubmit}/>
     </div>
   );
 }
