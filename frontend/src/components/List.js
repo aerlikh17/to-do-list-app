@@ -10,7 +10,7 @@ export default function List(props) {
                 <th>Done?</th>
                 <th></th>
             </thead>
-            {props.list.map(todo => <Row todo={todo} />)}
+            {props.list.map(todo => <Row key={todo.id} todo={todo} handleDelete={props.handleDelete}/>)}
         </table>
     </>
   )

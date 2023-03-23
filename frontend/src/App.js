@@ -27,9 +27,13 @@ function App() {
     setName('')
   }
 
+  const handleDelete = (id) => {
+    setList(list.filter(todo => todo.id !== id))
+  }
+
   return (
     <div className="App">
-      <Index list={list} handleSubmit={handleSubmit} handleChange={handleChange} name={name}/>
+      <Index list={list} handleSubmit={handleSubmit} handleChange={handleChange} name={name} handleDelete={handleDelete}/>
     </div>
   );
 }

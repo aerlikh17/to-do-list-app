@@ -4,7 +4,7 @@ import Row from '../components/Row'
 
 export default function Index(props) {
   return (
-    <div>
+    <>
         <h1>To-do List</h1>
         <form className="pure-form" onSubmit={props.handleSubmit}>
             <label>Name:</label>
@@ -13,7 +13,7 @@ export default function Index(props) {
         </form>
         <br></br>
         <hr></hr>
-        <List list={props.list}></List>
-    </div>
+        <List list={props.list} handleDelete={props.handleDelete}></List>
+    </>
   )
 }

@@ -6,7 +6,7 @@ export default function Row(props) {
         <tr>
             <td>{props.todo.name}</td>
             <td>{props.todo.done ? "Done" : "Not done"}</td>
-            <td><button>X</button></td>
+            <td><button onClick={() => props.handleDelete(props.todo.id)}>X</button></td>
         </tr>
     </tbody>
   )
