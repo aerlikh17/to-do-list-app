@@ -8,7 +8,7 @@ export default function Index(props) {
         <h1>To-do List</h1>
         <form className="pure-form" onSubmit={props.handleSubmit}>
             <label>Name:</label>
-            <input type="text" name="name" onChange={props.handleChange}/>
+            <input type="text" name="name" value={props.name} onChange={props.handleChange}/>
             <button className="pure-button">Add to-do</button>
         </form>
         <br></br>

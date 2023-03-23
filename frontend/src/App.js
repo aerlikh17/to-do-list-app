@@ -24,11 +24,12 @@ function App() {
     evt.preventDefault()
     setId((Math.floor(Math.random()*1000000)).toString())
     setList([...list, { id, name, done: false }])
+    setName('')
   }
 
   return (
     <div className="App">
-      <Index list={list} handleSubmit={handleSubmit} handleChange={handleChange}/>
+      <Index list={list} handleSubmit={handleSubmit} handleChange={handleChange} name={name}/>
     </div>
   );
 }
