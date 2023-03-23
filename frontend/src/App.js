@@ -15,6 +15,11 @@ function App() {
   const [id, setId] = useState('')
   const [name, setName] = useState('')
 
+  const handleChange = (evt) => {
+    evt.preventDefault()
+    setName(evt.target.value)
+  }
+
   const handleSubmit = (evt) => {
     evt.preventDefault()
     setId((Math.floor(Math.random()*1000000)).toString())
@@ -23,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      <Index list={list} handleSubmit={handleSubmit}/>
+      <Index list={list} handleSubmit={handleSubmit} handleChange={handleChange}/>
     </div>
   );
 }
