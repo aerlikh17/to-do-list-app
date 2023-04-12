@@ -9,6 +9,7 @@ function App() {
 
   const [id, setId] = useState('')
   const [name, setName] = useState('')
+  const [clicked, setClicked] = useState(false)
 
   useEffect(() => {
     async function fetchData(){
@@ -16,7 +17,7 @@ function App() {
       setList(res.data)
     }
     fetchData()
-  }, [])
+  }, [clicked])
 
   const handleChange = (evt) => {
     evt.preventDefault()
@@ -29,10 +30,13 @@ function App() {
     setList([...list, { id, name, done: false }])
     setName('')
     axios.post('/api/todos', {id, name, done: false})
+    setClicked(!clicked)
   }
 
   const handleDelete = (id) => {
     setList(list.filter(todo => todo.id !== id))
+    axios.delete(`/api/todos/${id}`)
+    setClicked(!clicked)
   }
 
   return (
