@@ -1,19 +1,22 @@
 import './App.css';
 import Index from './pages/Index';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
 
-  const [list, setList] = useState([
-    {
-      id: '1',
-      name: 'Learn MERN',
-      done: false
-    }
-  ])
+  const [list, setList] = useState([])
 
   const [id, setId] = useState('')
   const [name, setName] = useState('')
+
+  useEffect(() => {
+    async function fetchData(){
+      let res = await axios.get('/api/todos')
+      setList(res.data)
+    }
+    fetchData()
+  }, [])
 
   const handleChange = (evt) => {
     evt.preventDefault()
@@ -25,6 +28,7 @@ function App() {
     setId((Math.floor(Math.random()*1000000)).toString())
     setList([...list, { id, name, done: false }])
     setName('')
+    axios.post('/api/todos', {id, name, done: false})
   }
 
   const handleDelete = (id) => {
